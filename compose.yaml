@@ -7,7 +7,7 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
-      - ./logs
+      - ./:/app/logs
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: root
