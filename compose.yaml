@@ -1,18 +1,23 @@
+version: '3'
 services:
   app:
     image: node:18-alpine
     command: sh -c "yarn install && yarn run dev"
     ports:
-      - 127.0.0.1:3000:3000
+      - "127.0.0.1:3000:3000"
     working_dir: /app
     volumes:
       - ./:/app
-      - ./:/app/logs
+      - ./logs:/app/logs  # Adjusted volume mount for logs
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: root
       MYSQL_PASSWORD: secret
       MYSQL_DB: todos
+    depends_on:
+      - mysql  # Ensures the MySQL service is started before the app service
+    networks:
+      - prom-net  # Assigning the app service to the custom network
 
   mysql:
     image: mysql:8.0
@@ -21,6 +26,22 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: todos
+    networks:
+      - prom-net  # Assigning the mysql service to the custom network
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"  # Adjusted Prometheus command
+    networks:
+      - prom-net  # Assigning the prometheus service to the custom network
 
 volumes:
   todo-mysql-data:
+
+networks:
+  prom-net:  # Defining a custom network
