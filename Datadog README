@@ -1,4 +1,3 @@
-
 Description :
 DataDog est une plateforme complète de surveillance et d'analyse conçue pour suivre une large gamme de métriques à travers différents systèmes et applications. Elle offre une surveillance de l'infrastructure, des applications, des journaux, et bien plus encore, fournissant des insights sur les performances et la santé de l'ensemble de votre stack.
 
@@ -10,9 +9,9 @@ Dans notre implémentation, nous avons opté pour une configuration simple afin 
 
 La première étape a été d'intégrer l'agent DataDog dans notre conteneur Docker. Nous avons inclus l'installation de l'agent DataDog dans notre Dockerfile :
 
-Dockerfile
-
+```Dockerfile
 RUN DD_API_KEY=<VOTRE_CLE_API> bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/datadog-agent/master/cmd/agent/install_script.sh)"
+```
 
 L'étape suivante a été d'exposer un point de terminaison dans notre application pour que DataDog puisse collecter des métriques. Comme nous utilisons Node.js, nous avons dû installer le module DataDog :
 
