@@ -1,8 +1,8 @@
-#Description :
+# Description :
 **DataDog** est une plateforme complète de surveillance et d'analyse conçue pour suivre une large gamme de métriques à travers différents systèmes et applications. Elle offre une surveillance de l'infrastructure, des applications, des journaux, et bien plus encore, fournissant des insights sur les performances et la santé de l'ensemble de votre stack.
 Pour plus d'informations, vous pouvez consulter la documentation officielle ici : [Documentation officielle de DataDog](https://docs.datadoghq.com/fr/).
 
-#Notre Implémentation :
+# Notre Implémentation :
 
 Dans notre implémentation, nous avons opté pour une configuration simple afin de surveiller les métriques par défaut collectées par DataDog. Nous disposons d'une application Node.js de base, et nous avons suivi le guide de démarrage pour Docker.
 La première étape a été d'intégrer l'agent DataDog dans notre conteneur Docker. Nous avons inclus l'installation de l'agent DataDog dans notre Dockerfile :
@@ -62,6 +62,6 @@ datadog:
     network_mode: host
 `
 
-#Attention :
+# Attention :
 
 Pendant notre mise en œuvre, nous avons rencontré des difficultés liées à la configuration réseau. Il est important de s'assurer que DataDog et l'application sont sur le même réseau. De plus, il est essentiel d'utiliser la bonne adresse et non simplement 'localhost', sinon cela ne fonctionnera pas comme prévu.
