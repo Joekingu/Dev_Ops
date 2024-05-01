@@ -1,0 +1,9 @@
+pour prometheus
+
+bien faire un endpoint dans le code qui expose/metrics pour que prometheus puisse récupérer les informations
+
+penser à installer prom-client avec npm install prom-client si on est en nodejs
+
+nécessité d'être sur le même network 
+
+bien mettre la bonne adresse et pas simplement local host sinon ça marche pas
